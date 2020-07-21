@@ -1,0 +1,31 @@
+ <h1>List of <%=@device.serial%> Updates </>
+
+
+ <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Uptime</th>
+      <th>Load</th>
+      <th>Free Memory</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+    <% @device.updates.each do |update| %>
+        
+        <tr>
+        <td><%= update.created_at.strftime("%d-%m-%Y / %H:%M:%S") %></td>
+        <td><%= update.uptime %></td>
+        <td><%= update.load %></td>
+        <td><%= update.free_mem %></td>
+      </tr>
+        
+      
+    <% end %>
+  </tbody>
+
+
+</table>
+

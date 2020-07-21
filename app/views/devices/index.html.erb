@@ -1,0 +1,38 @@
+<h1>Devices</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Serial</th>
+      <th>Actions</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @devices.each do |device| %>
+      <tr>
+        <td><%= device.serial %></td>
+        <td>
+          <%= link_to "Watch Activity", device%> |
+          <%= link_to "Edit", edit_device_path(device) %> |
+          <%= link_to "Destroy", device, method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+        <%if device.updates.length==0%>
+          <td style="background-color:#FF0000">  Offline  </td>
+        <%else%>
+          <%last_time_device=device.updates.last.created_at %>
+          <%actual_time=Time.current%>
+          <%time_difference=((actual_time - last_time_device).to_i)%>
+          <%if time_difference < 60 %>
+            <td style="background-color:#3FFF33"> Online  </td>
+          <%else%>  
+            <td style="background-color:#FF0000"> Offline  </td>
+          <%end%>
+        <%end%>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<%= link_to "New Device", new_device_path, class: "btn btn-primary mb-2" %>
