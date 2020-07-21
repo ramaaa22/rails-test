@@ -3,8 +3,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.6"
-#ruby "2.7.1"
+
+ruby "2.7.1"
 
 
 gem 'api_key_maker', '~> 0.0.2'
