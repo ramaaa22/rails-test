@@ -17,7 +17,6 @@ module Api
                 }
                 device=Device.find(data[:device_id])
                 update= device.updates.create(uptime:data[:uptime], load:data[:load], free_mem:data[:free_mem])
-                redirect_back(fallback_location: root_path)
             end
 
             private
