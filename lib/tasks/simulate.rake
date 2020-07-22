@@ -16,7 +16,7 @@ task simulate: :environment do
 
     puts "#{device.serial} sending #{data.to_json}"
 
-    #records= Record.create(uptime:data[:uptime], load:data[:load], free_mem:data[:free_mem], device_id:device.id)
+    
 
     Requests.request("POST", "http://localhost:3000/api/v1/updates", data: data, headers: { "X-Api-Key" => device.api_key })
   rescue StandardError => e
